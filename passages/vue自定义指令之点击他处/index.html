@@ -219,7 +219,7 @@
 
   <div class="article-content">
     <div class="markdown-body">
-      <h1 id="vue自定义指令之点击他处"><a href="#vue自定义指令之点击他处" class="headerlink" title="vue自定义指令之点击他处"></a>vue自定义指令之点击他处</h1><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在网页中，点击某一块区域时，会发生事件的 捕获-冒泡 这个过程，以便通知应用程序，用户的操作行为是什么，以便执行相应的功能。</p>
+      <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在网页中，点击某一块区域时，会发生事件的 捕获-冒泡 这个过程，以便通知应用程序，用户的操作行为是什么，以便执行相应的功能。</p>
 <h3 id="一、vue之自定义指令"><a href="#一、vue之自定义指令" class="headerlink" title="一、vue之自定义指令"></a>一、vue之自定义指令</h3><p>如若关于vue自定义指令存在犹豫，不妨强势点击这里，<a href="http://lovemma.cn/passages/vue查缺补漏/">vue查缺补漏</a></p>
 <h3 id="二、vue之自定义指令之点击他处"><a href="#二、vue之自定义指令之点击他处" class="headerlink" title="二、vue之自定义指令之点击他处"></a>二、vue之自定义指令之点击他处</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  bind(el,binding) &#123;</span><br><span class="line">    <span class="keyword">let</span> HandleClickNotMe = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span>(el.contains(e.target))&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      binding.expression &amp;&amp; binding.value(e);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  el.__ClickNotMe__ = HandleClickNotMe;</span><br><span class="line">  <span class="built_in">document</span>.addEventListener(<span class="string">'click'</span>, el.__ClickNotMe__);</span><br><span class="line">&#125;,</span><br><span class="line">unbinding(el) &#123;</span><br><span class="line">  <span class="built_in">document</span>.removeEventListener(<span class="string">'click'</span>, el.__ClickNotMe__);</span><br><span class="line">  <span class="keyword">delete</span> el.__ClickNotMe__;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -285,6 +285,12 @@
         <a href="/passages/nginx之自定义404页面/" target="_self">nginx之自定义404页面</a>
       </div>
     
+    
+      <div class="nav-next">
+        下一篇:
+        <a href="/passages/vue之组件刷新/" target="_self">vue之组件刷新</a>
+        <i class="iconfont icon-next"></i>
+      </div>
     
   </nav>
 
